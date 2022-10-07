@@ -1,0 +1,11 @@
+$curl_handle = curl_init(C2C_CALL_API_URL);
+$query = http_build_query(array_merge([
+    'key' => C2C_API_KEY,
+    'dn' => $number,
+    'ext' => $extension
+], C2C_CALLBACK_URL !== null ? ['callback' => C2C_CALLBACK_URL] : []));
+curl_setopt($curl_handle, CURLOPT_POSTFIELDS, $query);
+curl_setopt($curl_handle, CURLOPT_HTTPHEADER, ['Content-Type: application/x-www-form-urlencoded']);
+curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, true );
+$result = json_decode(curl_exec($curl_handle));
+curl_close($curl_handle);
