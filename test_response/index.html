@@ -3,50 +3,138 @@
     <meta charset = "UTF-8">
     <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
 
 <body>
+    <h1 class = "text-center">Storing Dummy API data inside table</h1>
+
+    <div class = "container">
+
+    <table class="table table-bordered">
+
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">Company</th>
+            <th scope="col">Unit Code</th>
+            <th scope="col">Pick Address</th>
+            <th scope="col">KTB Say</th>
+          </tr>
+        </thead>
+        <tbody id="table_body">
+        </tbody>
+    </table>
+
+    </div>
+
 
     <script>
 
-    fetch('https://qa-interface.mitsubishi-motors.co.id/qa-api/DMSData/workorder/Read', {
-        mode: 'cors',
-        cache: 'no-cache',
+    fetch('http://localhost/dummy_data/test_response/token.php', {
+
+        // mode: 'cors',
+
+        // cache: 'no-cache',
+
         method: 'POST',
-        Authorization: 
-                'Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQkFCTUBkbXMuY29tIiwiRGVhbGVyQ29kZSI6Im1rcyIsIlVzZXJJZCI6IjE1MiIsIkNsaWVudElkIjoiNTczNDA0OGYtM2FmYy00ZjNiLWJlYjYtZmRlZWI5ZDQ2ZGI5IiwiRGVhbGVySWQiOiIyIiwiYXVkIjpbImh0dHBzOi8vcWEtaW50ZXJmYWNlLm1pdHN1YmlzaGktbW90b3JzLmNvLmlkL0NSNi1BcGkiLCJodHRwczovL3FhLWludGVyZmFjZS5taXRzdWJpc2hpLW1vdG9ycy5jby5pZC9DUjEyLUFwaSIsImh0dHBzOi8vcWEtaW50ZXJmYWNlLm1pdHN1YmlzaGktbW90b3JzLmNvLmlkL0NSMTAtQXBpIiwiaHR0cHM6Ly9xYS1pbnRlcmZhY2UubWl0c3ViaXNoaS1tb3RvcnMuY28uaWQvQ1IxMS1BcGkiLCJodHRwczovL3FhLWludGVyZmFjZS5taXRzdWJpc2hpLW1vdG9ycy5jby5pZC9DUjgtQXBpIiwiaHR0cHM6Ly9xYS1pbnRlcmZhY2UubWl0c3ViaXNoaS1tb3RvcnMuY28uaWQvQ1I5LUFwaSIsImh0dHBzOi8vcWEtaW50ZXJmYWNlLm1pdHN1YmlzaGktbW90b3JzLmNvLmlkL0NSNC1VSSIsImh0dHBzOi8vcWEtaW50ZXJmYWNlLm1pdHN1YmlzaGktbW90b3JzLmNvLmlkL0NSLUFwaSIsImh0dHBzOi8vcWEtaW50ZXJmYWNlLm1pdHN1YmlzaGktbW90b3JzLmNvLmlkL01JRy1BcGkiLCJodHRwczovL3FhLWludGVyZmFjZS5taXRzdWJpc2hpLW1vdG9ycy5jby5pZC9ERVYtQXBpIiwiaHR0cHM6Ly9xYS1pbnRlcmZhY2UubWl0c3ViaXNoaS1tb3RvcnMuY28uaWQvUUEtVUkiLCJodHRwczovL3FhLWludGVyZmFjZS5taXRzdWJpc2hpLW1vdG9ycy5jby5pZC9RQS1BcGkiLCJodHRwczovL3FhLWludGVyZmFjZS5taXRzdWJpc2hpLW1vdG9ycy5jby5pZC9ETVNUZXN0VUkiLCJodHRwczovL3FhLWludGVyZmFjZS5taXRzdWJpc2hpLW1vdG9ycy5jby5pZC9NSUctVUkiLCJodHRwczovL3FhLWludGVyZmFjZS5taXRzdWJpc2hpLW1vdG9ycy5jby5pZC9UcmFpbmluZy1VSSIsImh0dHBzOi8vcWEtaW50ZXJmYWNlLm1pdHN1YmlzaGktbW90b3JzLmNvLmlkL1RyYWluaW5nLUFwaSIsImh0dHBzOi8vcWEtaW50ZXJmYWNlLm1pdHN1YmlzaGktbW90b3JzLmNvLmlkL0RFVi1VSSIsImh0dHBzOi8vcWEtaW50ZXJmYWNlLm1pdHN1YmlzaGktbW90b3JzLmNvLmlkL0VVU1QtQXBpIiwiaHR0cHM6Ly9xYS1pbnRlcmZhY2UubWl0c3ViaXNoaS1tb3RvcnMuY28uaWQvQ1I3LVVJIiwiaHR0cHM6Ly9xYS1pbnRlcmZhY2UubWl0c3ViaXNoaS1tb3RvcnMuY28uaWQvV2ViVUkiLCJodHRwczovL3FhLWludGVyZmFjZS5taXRzdWJpc2hpLW1vdG9ycy5jby5pZC9ETVNUZXN0QXBpIiwiaHR0cHM6Ly9xYS1pbnRlcmZhY2UubWl0c3ViaXNoaS1tb3RvcnMuY28uaWQvQ1I0LUFwaSIsImh0dHBzOi8vcWEtaW50ZXJmYWNlLm1pdHN1YmlzaGktbW90b3JzLmNvLmlkL0FDQy1VSSIsImh0dHBzOi8vcWEtaW50ZXJmYWNlLm1pdHN1YmlzaGktbW90b3JzLmNvLmlkL0NSNS1BcGkiLCJodHRwOi8vbG9jYWxob3N0L01NS1NJV2ViVUkiLCJodHRwczovL3FhLWludGVyZmFjZS5taXRzdWJpc2hpLW1vdG9ycy5jby5pZC9VQVRBcGkiLCJodHRwczovL3FhLWludGVyZmFjZS5taXRzdWJpc2hpLW1vdG9ycy5jby5pZC9DUjUtVUkiLCJodHRwOi8vbG9jYWxob3N0L01NS1NJV2ViQXBpIiwiaHR0cHM6Ly9xYS1pbnRlcmZhY2UubWl0c3ViaXNoaS1tb3RvcnMuY28uaWQvRE1TVUkiLCJodHRwczovL3FhLWludGVyZmFjZS5taXRzdWJpc2hpLW1vdG9ycy5jby5pZC9XZWJBcGkiLCJodHRwczovL3FhLWludGVyZmFjZS5taXRzdWJpc2hpLW1vdG9ycy5jby5pZC9VQVRVSSIsImh0dHBzOi8vcWEtaW50ZXJmYWNlLm1pdHN1YmlzaGktbW90b3JzLmNvLmlkL0RNU0FwaSIsImh0dHBzOi8vcWEtaW50ZXJmYWNlLm1pdHN1YmlzaGktbW90b3JzLmNvLmlkL0NSNy1BcGkiLCJodHRwczovL3FhLWludGVyZmFjZS5taXRzdWJpc2hpLW1vdG9ycy5jby5pZC9DUjYtVUkiLCJodHRwczovL3FhLWludGVyZmFjZS5taXRzdWJpc2hpLW1vdG9ycy5jby5pZC9XZWIiLCJodHRwczovL3FhLWludGVyZmFjZS5taXRzdWJpc2hpLW1vdG9ycy5jby5pZC9BQ0MtQVBJIiwiaHR0cHM6Ly9xYS1pbnRlcmZhY2UubWl0c3ViaXNoaS1tb3RvcnMuY28uaWQvQ1ItVUkiLCJodHRwczovL3FhLWludGVyZmFjZS5taXRzdWJpc2hpLW1vdG9ycy5jby5pZC9DUjEtQXBpIiwiaHR0cHM6Ly9xYS1pbnRlcmZhY2UubWl0c3ViaXNoaS1tb3RvcnMuY28uaWQvQ1IxLVVJIiwiaHR0cHM6Ly9xYS1pbnRlcmZhY2UubWl0c3ViaXNoaS1tb3RvcnMuY28uaWQvQ1IyLUFwaSIsImh0dHBzOi8vcWEtaW50ZXJmYWNlLm1pdHN1YmlzaGktbW90b3JzLmNvLmlkL0NSMi1VSSIsImh0dHBzOi8vcWEtaW50ZXJmYWNlLm1pdHN1YmlzaGktbW90b3JzLmNvLmlkL0NSMy1BcGkiLCJodHRwczovL3FhLWludGVyZmFjZS5taXRzdWJpc2hpLW1vdG9ycy5jby5pZC9DUjMtVUkiLCJodHRwczovL3FhLWludGVyZmFjZS5taXRzdWJpc2hpLW1vdG9ycy5jby5pZC9BUEkiXSwiZXhwIjoxNjY1OTc1NjAwLCJpc3MiOiJodHRwczovL2ludGVyZmFjZS5taXRzdWJpc2hpLW1vdG9ycy5jby5pZCJ9.bHC-rhZF4Pw7k3l_132YT9uHYZtYsBF1UWYgRHCOGHo',
-        // headers: {
-        //     'Content-Type': 'application/json',
-        // },
-        body: {
-            "pages": 1,
-            "find": [
-                {
-                    "MatchType": 0,
-                    "PropertyName": "company",
-                    "PropertyValue": "PT-BABM",
-                    "SqlOperation": 0
-                }
-            ],
-            "sort": [
-                {
-                    "SortColumn": "businessunitcode",
-                    "SortDirection": 0
-                }
-            ]
-        }
+        
     }) 
         .then(res => {
-            console.log(res);
-            // if (res.ok) {
-            //     console.log('SUCCESS')
-            // } else {
-            //     console.log('NOT SUCCESS')
-            // }
-        })
-        .then(data => console.log(data))
-        .catch(error => console.log('ERROR'))
+
+            res.json().then(
+                
+                data => {
+
+                    // console.log(data);
+
+                    if(data.Success === false){
+
+                        alert(data.Message);
+                        
+                        return;
+
+                    }
+
+                    fetch('http://localhost/dummy_data/test_response/index.php', {
+
+                        method: 'POST',
+
+                        body: data.access_token
+
+                    }).then(res => {
+
+                        res.json().then(
+
+                            data => {
+                                
+                                // console.log(data);
+
+                                if(data.success === false) {
+
+                                    alert(data.messages.ErrorMessage);
+
+                                    return;
+                                    
+                                }
+
+                                // tampilkan ke list/table (sajikan data ke dalam table)
+
+                                // list = json_decode(data.lst);
+                                
+                                // console.log(list);
+
+                                console.log(data.lst);
+
+                                var tabledata = "";
+
+                                // fill the tables with fetched api data
+
+                                data.lst.map((values) => {
+
+                                    tabledata+= `<tr>
+
+                                    <td>${values.company}</td>
+
+                                    <td>${values.businessunitcode}</td>
+
+                                    <td>${values.xts_pickupaddress4}</td>
+
+                                    <td>${values.ktb_statusinterfacefreeservicednet}</td>
+
+                                    </tr>`;
+
+                                })
+
+                                // data.lst.forEach((x) => {
+
+                                //     tabledata += "<tr>";
+
+                                //     tabledata += x.company + "<td>";
+
+                                //     tabledata += x.businessunitcode + "<td>";
+
+                                //     tabledata += x.xts_pickupaddress4 + "<td>";
+
+                                //     tabledata += x.ktb_statusinterfacefreeservicednet + "<td>";
+
+                                //     tabledata += "<tr>";
+
+                                // });
+
+                                document.getElementById("table_body").innerHTML += tabledata;
+
+                            }
+
+                        )})
+                    
+                });
+                
+        }).catch(error => console.log(error));
+
 
     </script>
 
 </body>
+
+
