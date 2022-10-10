@@ -54,13 +54,15 @@
                         
                         return;
 
-                    }
+                    } 
 
                     fetch('http://localhost/dummy_data/test_response/index.php', {
 
                         method: 'POST',
 
-                        body: data.access_token
+                        body: JSON.stringify({token: data.access_token}),
+
+                        headers: {'content-type': 'application/json'}
 
                     }).then(res => {
 
@@ -130,7 +132,7 @@
                     
                 });
                 
-        }).catch(error => console.log(error));
+        }).catch(error => console.log("Error"));
 
 
     </script>
